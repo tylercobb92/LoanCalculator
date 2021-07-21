@@ -33,6 +33,7 @@ function setupInitialValues() {
 // Get the current values from the UI
 // Update the monthly payment
 function update() {
+
 }
 
 // Given an object of values (a value has amount, years and rate ),
@@ -45,7 +46,7 @@ function calculateMonthlyPayment(values) {
   let i = (x.rate) / 12;
   let n = (x.years) * 12;
   let monthlyPayment = ((p * i) / (1 - (1 + i) ** -(n))).toFixed(2);
-  console.log(monthlyPayment);
+  return monthlyPayment;
 }
 
 // Given a string representing the monthly payment value,

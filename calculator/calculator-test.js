@@ -1,5 +1,5 @@
 it('should calculate the monthly rate correctly', function () {
-  expect(calculateMonthlyPayment(10000, 10, 0.1).toEqual(132.15))
+  expect(calculateMonthlyPayment(amount: 10000, years: 10, rate: 0.1).toEqual(132.15))
 });
 
 
