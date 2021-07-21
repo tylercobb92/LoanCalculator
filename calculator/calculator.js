@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById("calc-form");
   if (form) {
-    // setupIntialValues();
+    setupInitialValues();
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       update();
@@ -21,19 +21,21 @@ function getCurrentUIValues() {
 // Put some default values in the inputs
 // Call a function to calculate the current monthly payment
 function setupInitialValues() {
-  const amount = document.getElementById("loan-amount");
-  const years = document.getElementById("loan-years");
-  const rate = document.getElementById("loan-rate");
-  amount.value = 10000;
-  years.value = 10;
-  rate.value = 0.1;
+  const loanAmount = document.getElementById("loan-amount");
+  const loanYears = document.getElementById("loan-years");
+  const loanRate = document.getElementById("loan-rate");
+  loanAmount.value = 10000;
+  loanYears.value = 10;
+  loanRate.value = 0.1;
   calculateMonthlyPayment();
 }
 
 // Get the current values from the UI
 // Update the monthly payment
 function update() {
-
+  getCurrentUIValues();
+  calculateMonthlyPayment();
+  updateMonthly();
 }
 
 // Given an object of values (a value has amount, years and rate ),
@@ -45,15 +47,16 @@ function calculateMonthlyPayment(values) {
   let p = x.amount;
   let i = (x.rate) / 12;
   let n = (x.years) * 12;
-  let monthlyPayment = ((p * i) / (1 - (1 + i) ** -(n))).toFixed(2);
-  return monthlyPayment;
+  return ((p * i) / (1 - (1 + i) ** -(n))).toFixed(2);
 }
 
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
 function updateMonthly(monthly) {
+  let payment = document.getElementById("monthly-payment");
+  payment.textContent = calculateMonthlyPayment();
 }
 
-document.addEventListener("click", function (e) {
-  console.log(e.target)
-})
+// document.addEventListener("click", function (e) {
+//   console.log(e.target)
+// })
