@@ -1,4 +1,3 @@
-
 it('should calculate the monthly rate correctly', function () {
   expect(calculateMonthlyPayment(10000, 10, 0.1).toEqual(132.15))
 });
